@@ -9,9 +9,11 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Catalog"),
       ),
-      body: Container(
-        child: Text("Welcome to 30 days flutter course"),
-      ), 
+      body: Center(
+        child: Container(
+          child: Text("Welcome to 30 days flutter course"),
+        ),
+      ),
       drawer: Drawer(),
     );
   }
