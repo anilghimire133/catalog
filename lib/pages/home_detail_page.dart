@@ -14,10 +14,12 @@ class HomeDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
       backgroundColor: MyTheme.creamWhite,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: Colors.transparent,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -30,8 +32,8 @@ class HomeDetailsPage extends StatelessWidget {
                   shape: MaterialStateProperty.all(
                     StadiumBorder(),
                   )),
-              child: "Buy".text.make(),
-            ).wh(100, 50)
+              child: "Add to cart".text.make(),
+            ).wh(120, 50)
           ],
         ).p24(),
       ),
@@ -53,19 +55,19 @@ class HomeDetailsPage extends StatelessWidget {
               arcType: VxArcType.CONVEY,
               child: Container(
                 color: Colors.white,
-                child: Padding(
-                  padding: const EdgeInsets.all(64.0),
-                  child: Column(
-                    children: [
-                      catalog.name.text.xl4.bold
-                          .color(MyTheme.darkBluishColor)
-                          .make(),
-                      catalog.desc.text
-                          .textStyle(context.captionStyle)
-                          .xl
-                          .make(),
-                    ],
-                  ),
+                child: Column(
+                  children: [
+                    catalog.name.text.xl4.bold
+                        .color(MyTheme.darkBluishColor)
+                        .make()
+                        .py20(),
+                    catalog.desc.text.textStyle(context.captionStyle).xl.make(),
+                    10.heightBox,
+                    "Fugiat labore sunt epteur veniam. Excepteur consequat esse sunt amet irure duis nulla do."
+                        .text
+                        .make()
+                        .p12()
+                  ],
                 ),
               ),
             ))
