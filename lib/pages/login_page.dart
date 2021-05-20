@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/utils/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -11,15 +12,13 @@ class _LoginPageState extends State<LoginPage> {
   bool changeButton = false;
   final _formKey = GlobalKey<FormState>();
 
-
   moveToHome(BuildContext buildContext) async {
-    if(_formKey.currentState.validate()) {
+    if (_formKey.currentState.validate()) {
       setState(() {
         changeButton = true;
       });
       await Future.delayed(Duration(seconds: 1));
-      await Navigator.pushNamed(
-          context, MyRoutes.homeRoute);
+      await Navigator.pushNamed(context, MyRoutes.homeRoute);
       setState(() {
         changeButton = false;
       });
@@ -32,10 +31,9 @@ class _LoginPageState extends State<LoginPage> {
         appBar: AppBar(
           title: Text("BGTECH"),
         ),
-
         body: SingleChildScrollView(
           child: Form(
-key: _formKey,
+            key: _formKey,
             child: Column(
               children: [
                 Image.asset(
@@ -53,14 +51,12 @@ key: _formKey,
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(vertical: 15, horizontal: 32),
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 32),
                   child: Column(
                     children: [
                       TextFormField(
                         decoration: InputDecoration(
-                            hintText: "Enter Name",
-                            labelText: "UserName"),
-
+                            hintText: "Enter Name", labelText: "UserName"),
                         validator: (value) {
                           if (value.isEmpty) {
                             return "User name cannot be empty";
@@ -71,32 +67,28 @@ key: _formKey,
                           name = value;
                           setState(() {});
                         },
-
                       ),
                       TextFormField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          hintText: "Enter Password ",
-                          labelText: "Password",
-                        ),
-                        validator:(value) {
-                          if (value.isEmpty) {
-                            return "Password cannot be empty";
-                          }
-                          else if (value.length <6) {
-                            return "Password length should be greater than 5";
-                          }
-                          return null;
-                        }
-
-                      ),
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            hintText: "Enter Password ",
+                            labelText: "Password",
+                          ),
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return "Password cannot be empty";
+                            } else if (value.length < 6) {
+                              return "Password length should be greater than 5";
+                            }
+                            return null;
+                          }),
                       SizedBox(
                         height: 40,
                       ),
                       Material(
-                        color: Colors.deepPurple,
+                        color: context.theme.buttonColor,
                         borderRadius:
-                        BorderRadius.circular(changeButton ? 50 : 8),
+                            BorderRadius.circular(changeButton ? 50 : 8),
                         child: InkWell(
                           onTap: () => moveToHome(context),
                           child: AnimatedContainer(
@@ -107,13 +99,12 @@ key: _formKey,
                             child: changeButton
                                 ? Icon(Icons.done)
                                 : Text(
-                              "Login",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-
+                                    "Login",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ),
                           ),
                         ),
                       )
